@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tech Workshop 2026 - Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4e73df, #1cc88a);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        fieldset {
+            border: 2px solid #4e73df;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #4e73df;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+        }
+
+        input[type="submit"] {
+            background-color: #4e73df;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2e59d9;
+        }
+
+        input[type="reset"] {
+            background-color: #858796;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #6c757d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4e73df;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f8f9fc;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Tech Workshop 2026</h1>
+    <p>Join our interactive workshop on Web Development, AI, and Cloud Computing.</p>
+
+    <h2>Event Registration Form</h2>
+
+    <form id="registrationForm">
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            Full Name:
+            <input type="text" id="fullname" required>
+
+            Email:
+            <input type="email" id="email" required>
+
+            Phone:
+            <input type="tel" id="phone" required>
+
+            Gender:
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Other"> Other
+        </fieldset>
+
+        <fieldset>
+            <legend>Event Selection</legend>
+
+            Select Event:
+            <select id="event" required>
+                <option value="">--Select--</option>
+                <option>Web Development Workshop</option>
+                <option>AI Basics Seminar</option>
+                <option>Cloud Computing Bootcamp</option>
+            </select>
+
+            Mode:
+            <input type="radio" name="mode" value="Online" required> Online
+            <input type="radio" name="mode" value="Offline"> Offline
+        </fieldset>
+
+        <input type="checkbox" id="declaration" required>
+        I confirm that the above details are correct.
+        <br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+
+    <h2>Registered Participants</h2>
+
+    <table id="participantsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Event</th>
+                <th>Mode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rahul Sharma</td>
+                <td>rahul@email.com</td>
+                <td>9876543210</td>
+                <td>Web Development Workshop</td>
+                <td>Offline</td>
+            </tr>
+            <tr>
+                <td>Divya</td>
+                <td>div@email.com</td>
+                <td>1234566210</td>
+                <td>AI Basics Seminar</td>
+                <td>Online</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        <p>Contact Email: support@techworkshop.com</p>
+        <p>Help Desk: +91 98765 43210</p>
+        <p>&copy; 2026 Tech Workshop</p>
+    </footer>
+
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("fullname").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const eventSelected = document.getElementById("event").value;
+        const mode = document.querySelector('input[name="mode"]:checked').value;
+
+        const table = document.getElementById("participantsTable").getElementsByTagName("tbody")[0];
+        const newRow = table.insertRow();
+
+        newRow.insertCell(0).innerText = name;
+        newRow.insertCell(1).innerText = email;
+        newRow.insertCell(2).innerText = phone;
+        newRow.insertCell(3).innerText = eventSelected;
+        newRow.insertCell(4).innerText = mode;
+
+        document.getElementById("registrationForm").reset();
+    });
+</script>
+
+</body>
+</html>
